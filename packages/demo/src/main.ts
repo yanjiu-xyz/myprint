@@ -26,7 +26,8 @@ initVisitorId();
 
 MyPrinter.initMyPrinter({
     clientUrl: 'ws://127.0.0.1:9898',
-    serverUrl: import.meta.env.VITE_API_PDF_SERVER_URL
+    serverUrl: import.meta.env.VITE_API_PDF_SERVER_URL,
+    // disabledClient: true
 });
 
 // MyPrinter.setLocale('enUs');

@@ -1,5 +1,5 @@
 import { ElMessage } from 'element-plus';
-import { load } from '@fingerprintjs/fingerprintjs';
+import { load, hashComponents } from '@fingerprintjs/fingerprintjs';
 import { autoLogin } from '@/api/login';
 
 export function emptyIs(val: any) {
@@ -27,8 +27,16 @@ export function msgError(msg: string) {
     ElMessage.error(msg);
 }
 
-export let visitorId = null;
-export let token = null;
+let visitorId = null;
+let token = null;
+
+export function getVisitorId() {
+    return visitorId ?? '-1';
+}
+
+export function getToken() {
+    return token ?? '-1';
+}
 
 export function initVisitorId() {
     visitorId = window.localStorage.getItem('visitorId');
@@ -42,8 +50,23 @@ export function initVisitorId() {
         fpPromise
             .then(fp => fp.get())
             .then(result => {
+                const { fonts, languages, audio, ...components } = result.components;
+                // Add a few custom components
+                const extendedComponents = {
+                    canvas: components.canvas,
+                    audioBaseLatency: components.audioBaseLatency,
+                    forcedColors: components.forcedColors,
+                    math: components.math,
+                    osCpu: components.osCpu,
+                    vendor: components.vendor,
+                    platform: components.platform,
+                    touchSupport: components.touchSupport,
+                    deviceMemory: components.deviceMemory,
+                    cpuClass: components.cpuClass,
+                    applePay: components.applePay
+                };
                 // 这个唯一ID
-                visitorId = result.visitorId;
+                visitorId = hashComponents(extendedComponents);
                 window.localStorage.setItem('visitorId', visitorId);
 
                 autoLogin({ visitorId })

@@ -12,7 +12,7 @@ import 'vue-cropper/dist/index.css';
 import { useSocket } from './stores/socket';
 import { mitt } from './utils/utils';
 import { useConfigStore } from './stores/config';
-import { installPrinter } from './printer';
+import { installPrinter, myPrintOptions } from './printer';
 import { initDisplayRatio } from './utils/devicePixelRatio';
 import { installMessage } from './components/my/message/my-message';
 
@@ -39,7 +39,9 @@ const install = {
             // @ts-ignore
             .use(Vue3ColorPicker);
         app.provide(mittKey, mitt);
-        useSocket().INIT_SOCKET();
+        if (!myPrintOptions.disabledClient) {
+            useSocket().INIT_SOCKET();
+        }
         useConfigStore().initConfig();
 
         installPrinter(app);

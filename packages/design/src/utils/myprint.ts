@@ -77,9 +77,9 @@ export function iFramePrint(panel: Panel, html: string) {
     iframe.setAttribute(
         'style',
         `height: ${valueUnit(getPrintRealHeight(panel))}; width: ${valueUnit(panel.width)}; 
-         
+        display: none; 
         position: absolute; 
-        left: 0; 
+        left: 99999; 
         top: 0;border: 0;
       z-index: 10000;`
     );
@@ -119,7 +119,7 @@ export function iFramePrint(panel: Panel, html: string) {
     iframe.contentWindow!.print();
     // 移除iframe
     setTimeout(function() {
-        // document.body.removeChild(iframe);
+        document.body.removeChild(iframe);
         //     // data.pageList = [];
     }, 10000);
 }

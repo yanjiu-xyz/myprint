@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 // import errorCode from '@/utils/errorCode';
 import { R } from '@/types/R';
-import { token, visitorId } from '@/utils/util';
+import { getToken, getVisitorId } from '@/utils/util';
 // import cache from '@/plugins/cache'
 // import { saveAs } from 'file-saver'
 
@@ -29,8 +29,8 @@ service.interceptors.request.use(config => {
     // if (getToken() && !isToken) {
     //     config.headers['Authorization'] = 'Bearer ' + getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
     // }
-    config.headers.set('visitorId', visitorId);
-    config.headers.set('token', token);
+    config.headers.set('visitorId', getVisitorId());
+    config.headers.set('token', getToken());
     // get请求映射params参数
     if (config.method === 'get' && config.params) {
         let url = config.url;

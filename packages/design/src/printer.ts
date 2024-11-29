@@ -125,7 +125,7 @@ export const MyPrinter = {
                 useConfigStore().clientUrl = options.clientUrl;
             }
         }
-        options.disabledClient != null && (myPrintOptions.disabledClient = options.disabledClient);
+        myPrintOptions.disabledClient = options.disabledClient == null ? false : options.disabledClient;
     },
 
     setLocale<T extends typeof i18n.global.locale.value>(locale: T) {
