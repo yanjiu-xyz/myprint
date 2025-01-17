@@ -138,6 +138,7 @@ function changePageSize() {
     data.miniMap.height = data.height * min;
     data.miniMap.x = (scaleContainerWidth - data.miniMap.width) / 2;
     data.miniMap.y = (scaleContainerHeight - data.miniMap.height) / 2;
+    mitt.emit('scaleEvent');
 }
 
 const scaleContainerWidth = 260;
