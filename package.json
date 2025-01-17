@@ -1,5 +1,7 @@
 {
   "scripts": {
+    "dev:demo": "pnpm -F @myprint/demo run dev",
+    "dev": "pnpm -F @myprint/design run dev",
     "build:design": "npm run gen:version && npm run build:module && npm run build:dts && npm run build:css && npm run build:full-bundle",
     "build:module": "vite-node ./scripts/build-module.ts",
     "build:dts": "vite-node ./scripts/build-dts.ts",

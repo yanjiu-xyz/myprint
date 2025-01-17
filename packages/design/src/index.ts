@@ -7,11 +7,4 @@ import { version } from '@myprint/design/version';
 export * from './types/entity';
 export * from './types/R';
 
-
-export {
-    version,
-    createPrint,
-    mountDesign,
-    MyPrinter,
-    DesignPanel
-};
+export { version, createPrint, mountDesign, MyPrinter, DesignPanel };
