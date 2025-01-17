@@ -195,10 +195,10 @@ function elementClick(element: MyElement) {
 function scaleEvent() {
     //let mmDiv = document.createElement('div');
     //通过更改 className 来触发重绘
-    designContentRef.value.classList.add('design-content-scale');
+    designContentRef.value?.classList.add('design-content-scale');
     nextTick(() => {
         setTimeout(() => {
-            designContentRef.value.classList.remove('design-content-scale');
+            designContentRef.value?.classList.remove('design-content-scale');
         }, 100);
         // scrollbarRef.value.update()
     });
