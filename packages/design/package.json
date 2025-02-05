@@ -1,5 +1,5 @@
 {
-  "name": "myprint-design",
+  "name": "@myprint/design",
   "version": "1.0.9",
   "main": "lib/index.js",
   "module": "es/index.mjs",
