@@ -183,13 +183,15 @@ const style = computed(() => {
     if (props.direction == 'horizontal') {
         styleTmp['width'] = valueUnit(props.length);
         styleTmp['height'] = height + 'px';
+        styleTmp['transformOrigin'] = scaleUtil.miniMap.scale < 1 ? '0' : '' + ' left';
+        styleTmp['transform'] = 'scaleX(' + scaleUtil.miniMap.scale + ')';
     } else {
         styleTmp['width'] = height + 'px';
         styleTmp['minWidth'] = height + 'px';
         styleTmp['height'] = valueUnit(props.length);
+        styleTmp['transformOrigin'] = scaleUtil.miniMap.scale < 1 ? '0' : '' + ' top';
+        styleTmp['transform'] = 'scaleY(' + scaleUtil.miniMap.scale + ')';
     }
-    styleTmp['transformOrigin'] = scaleUtil.miniMap.scale < 1 ? '0' : '' + ' top';
-    styleTmp['transform'] = 'scale(' + scaleUtil.miniMap.scale + ')';
     return styleTmp;
 });
 

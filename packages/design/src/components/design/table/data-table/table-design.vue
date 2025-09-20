@@ -187,8 +187,9 @@ onMounted(() => {
             }
             // entry.contentRect 包含元素的新尺寸
             // console.log('元素尺寸改变:', entry.contentRect.width, entry.contentRect.height);
-            setElementHeightPx(entry.contentRect.height + 1, props.element);
-            setElementWidthPx(entry.contentRect.width + 1, props.element);
+            // 设置元素高度和宽度 + 2 （+1会死循环）
+            setElementHeightPx(entry.contentRect.height + 2, props.element);
+            setElementWidthPx(entry.contentRect.width + 2, props.element);
             nextTick(() => {
                 data.tableRowHeightList = computedTableCell(props.element, tableRef.value.$el, bodyList.value);
                 if (data.cellList && data.cellList.length > 0) {
