@@ -98,11 +98,12 @@ onUnmounted(() => {
 });
 
 const moduleWatchStop = watch(() => props.module, (_n, _o) => {
-    if (props.module) {
-        initModule();
-        moduleWatchStop();
-    }
-});
+        if (props.module) {
+            initModule();
+            moduleWatchStop();
+        }
+    }, { deep: true } // 🔑 深度监听
+);
 
 function initModule() {
     if (!props.module) {
