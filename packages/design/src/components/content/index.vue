@@ -97,10 +97,9 @@ onUnmounted(() => {
     mitt.off('saveTemplate', saveTemplate);
 });
 
-const moduleWatchStop = watch(() => props.module, (_n, _o) => {
+watch(() => props.module, (_n, _o) => {
         if (props.module) {
             initModule();
-            moduleWatchStop();
         }
     }, { deep: true } // 🔑 深度监听
 );
